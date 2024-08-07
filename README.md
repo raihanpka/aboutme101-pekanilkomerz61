@@ -2,3 +2,5 @@
 ### Raihan Putra Kirana [G6401231027]
 - Kelompok Proxy: Eigen
 - Kakak Proxy: Kak Cindy & Kak Ghani
+
+### Link Preview: https://raihanpk-aboutme101.netlify.app/
