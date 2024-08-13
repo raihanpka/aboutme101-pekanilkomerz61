@@ -65,3 +65,57 @@ let myDate = document.querySelector("#datee");
 
 const yes = new Date().getFullYear();
 myDate.innerHTML = yes;
+
+// Carousel
+const carouselContainer = document.querySelector('.carousel-container');
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const carouselBtnPrev = document.querySelector('.carousel-btn prev');
+const carouselBtnNext = document.querySelector('.carousel-btn next');
+const carouselDots = document.querySelector('.carousel-dots');
+
+let currentSlide = 0;
+
+// Add event listeners to buttons
+carouselBtnPrev.addEventListener('click', () => {
+  currentSlide--;
+  updateCarousel();
+});
+
+carouselBtnNext.addEventListener('click', () => {
+  currentSlide++;
+  updateCarousel();
+});
+
+// Add event listeners to dots
+carouselDots.addEventListener('click', (e) => {
+  if (e.target.classList.contains('dot')) {
+    currentSlide = Array.prototype.indexOf.call(carouselDots.children, e.target);
+    updateCarousel();
+  }
+});
+
+// Update carousel function
+function updateCarousel() {
+  carousel.style.transform = `translateX(${currentSlide * -100}%)`;
+  updateDots();
+}
+
+// Update dots function
+function updateDots() {
+  const dots = carouselDots.children;
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove('active');
+  }
+  dots[currentSlide].classList.add('active');
+}
+
+// Initialize carousel
+updateCarousel();
+
+// Create dots dynamically
+for (let i = 0; i < carouselItems.length; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  carouselDots.appendChild(dot);
+}
